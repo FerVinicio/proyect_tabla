@@ -1,4 +1,4 @@
-
+const { v4: uuidv4 } = require('uuid');
 
 export function CreateColumn(field, type, disablePadding, title) {
     return {
@@ -10,6 +10,15 @@ export function CreateColumn(field, type, disablePadding, title) {
         align:     type === 'string' ? 'left' : type === 'date' ? 'center' : 'right',
     };
   }
+
+export function CreateIDForData( arrData = [] ) {
+   const newData = arrData.map( row => {
+      return {...row, id:  uuidv4()}
+   } )
+   console.log('Nueva array con IDs')
+   console.log(newData);
+   return newData;
+}
 
 export function CreateColumnToExport({title, type, align}) {
     return {
@@ -54,5 +63,13 @@ export function stableSort(array, comparator) {
     }
     return a[1] - b[1];
   });
+
+  const cols = stabilizedThis.map((el) => el[0])
+              .map((row, index) => {
+
+              });
+  console.log('Sort method');
+  console.log(cols);
+
   return stabilizedThis.map((el) => el[0]);
 }

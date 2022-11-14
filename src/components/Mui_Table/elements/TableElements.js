@@ -20,7 +20,7 @@ const ContenedorTabla = styled.div`
 
 const StyledTableRow = styled(TableRow)(({theme}) => ({
     '&:nth-of-type(odd)': {
-      backgroundColor:'#eaeaea',
+      backgroundColor:'#FDDEF9',
     },
     // hide last border
     '&:last-child td, &:last-child th': {

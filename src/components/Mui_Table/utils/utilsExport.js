@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import { saveAs } from 'file-saver';
 
 const URL_HOST = "https://localhost:8443";
-const url = URL_HOST + "/ws-admin-servicios/ws/generarExportableExcel";
+const url = URL_HOST + "/ws-admin-servicios/ws/generarExportable";
 const myHeaders = new Headers({"Content-Type": "application/json",});
+
+myHeaders.append("Access-Control-Allow-Origin", "http://localhost:8443/home")
 var fileNameDef = '';
 
 export const createColumnToExport = ({title, type}) => {

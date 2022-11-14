@@ -35,7 +35,7 @@ const FilterField = ({id, label}) => {
             </InputAdornment>
           ),
         }}
-        variant="standard"
+        size="small"
         value = {searchText}
         onChange = {onInputText}
       />

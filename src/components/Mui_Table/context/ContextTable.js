@@ -14,6 +14,8 @@ const ProviderTable = ({children}) => {
 
   const [propsToExport, setPropToExport] = useState({});
 
+  const [tableTitle, setTableTitle] = useState('Tabla de resultados');
+
   const onChangeDataColumns = ( newDataColumns ) => {
       setDataColumns([...newDataColumns]);
       setDataColumnsFilter([...newDataColumns]);
@@ -72,8 +74,10 @@ const ProviderTable = ({children}) => {
   }
 
   return (
-    <ContextTable.Provider value={{dataColumnsFilter, dataRowsFilter, propsToExport, createRowsFilter, onChangeDataColumns, 
-                                   onChangeDataRows, onAddFilterColumns, onRemoveFilterColumns, onChangePropsToExport}}
+    <ContextTable.Provider value={{ dataColumnsFilter, dataRowsFilter, propsToExport, tableTitle, createRowsFilter, 
+                                    onChangeDataColumns, onChangeDataRows, onAddFilterColumns, onRemoveFilterColumns, 
+                                    onChangePropsToExport, setTableTitle
+                                 }}
     >
         {children}
     </ContextTable.Provider>

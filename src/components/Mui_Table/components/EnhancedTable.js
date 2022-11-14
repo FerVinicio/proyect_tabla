@@ -30,9 +30,9 @@ export default function EnhancedTable() {
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const {dataColumnsFilter, dataRowsFilter} = React.useContext(ContextTable);
+  const {dataColumnsFilter, dataRowsFilter, tableTitle} = React.useContext(ContextTable);
   console.log('Cargando la tabla y sus columnas');
-  console.log(dataColumnsFilter);
+  //console.log(dataColumnsFilter);
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -42,7 +42,7 @@ export default function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = dataRowsFilter.map((n) => n.name);
+      const newSelected = dataRowsFilter.map((n) => n.id);
       setSelected(newSelected);
       return;
     }
@@ -88,10 +88,16 @@ export default function EnhancedTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataRowsFilter.length) : 0;
 
+  console.log('Creando tabla ->>>>>>');
+
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        {console.log('Llamada a encabezados')}
+        <EnhancedTableToolbar 
+            numSelected={selected.length}
+            tableTitle = {tableTitle} 
+        />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -115,17 +121,17 @@ export default function EnhancedTable() {
               {stableSort(dataRowsFilter, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <StyledTableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+                      onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={row.id}
                       selected={isItemSelected}
                     >
                       {/*  <TableCell padding="checkbox">
@@ -139,11 +145,16 @@ export default function EnhancedTable() {
                       </TableCell> */}
 
                       {
-                        Object.keys(row).map((key, index) => (
-                            <TableCell align = {dataColumnsFilter[index].align ? dataColumnsFilter[index].align : "left"} key={key}>
-                                {row[key]}
-                            </TableCell>
-                        ))
+                        Object.keys(row).map((key, index) => {
+                            //console.log('Key: ' + key)
+                            if (key !== 'id') {
+                              return (
+                                <TableCell align = {dataColumnsFilter[index].align ? dataColumnsFilter[index].align : "left"} key={key}>
+                                    {row[key]}
+                                </TableCell>
+                              )
+                            }
+                        })
                       }
                     </StyledTableRow>
                   );
@@ -169,11 +180,12 @@ export default function EnhancedTable() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
+          //labelRowsPerPage = 'Filas por página'
         />
       </Paper>
       <FormControlLabel
         control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
+        label = {dense ? "Desactivar alta densidad" : "Activar alta densidad"}
       />
     </Box>
   );

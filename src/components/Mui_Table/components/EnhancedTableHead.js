@@ -14,7 +14,12 @@ export const EnhancedTableHead = ({ dataColumns, onSelectAllClick, order, orderB
     };
 
     const selectAllCheckbox = selection && 
-                                <TableCell padding="checkbox">
+                                <TableCell 
+                                  sx={{ borderBottomWidth: 0}}
+                                  //sx={{ paddingY: 0 , paddingX: 1.5, borderBottomWidth: 0}}
+                                  padding="checkbox"
+                                  borderBottom='0'
+                                  >
                                   <Checkbox
                                     color="primary"
                                     indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -33,6 +38,7 @@ export const EnhancedTableHead = ({ dataColumns, onSelectAllClick, order, orderB
           {/* {selectAllCheckbox} */}
           {dataColumns.map((headCell) => (
             <TableCell
+              sx={{ paddingY: 1 , paddingX: 1.5, borderBottomWidth: 0}}
               key={headCell.field}
               align={headCell.numeric ? 'right' : 'left'}
               padding={headCell.disablePadding ? 'none' : 'normal'}

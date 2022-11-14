@@ -4,18 +4,20 @@ import './index.css';
 //import App from './App';
 import Contenedor from './components/Mui_Table/elements/Contenedor';
 import MuiTable from './components/Mui_Table/components/Mui_Table';
-import { CreateColumn } from './components/Mui_Table/utils/utils';
+import {headCells, getSnrFederalColumns} from './columnsDef'
+import {getDessert, getSNRFederal} from './api/apiRowsData';
 
-import {rows} from './api/apiRowsData';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { esES } from '@mui/material/locale';
 
-const headCells = [
-    /*           field         type,   disablePadding,   title                 */
-    CreateColumn('name'     ,'string'   ,false         ,'Dessert (100g serving)'),
-    CreateColumn('calories' ,'number'   ,false        ,'Calories'),
-    CreateColumn('fat'      ,'number'   ,false        ,'Fat (g)'),
-    CreateColumn('carbs'    ,'number'   ,false        ,'Carbs (g)'),
-    CreateColumn('protein'  ,'number'   ,false        ,'Proteina (g)'),
-  ];
+  const theme = createTheme(
+    {
+      palette: {
+        primary: { main: '#1976d2' },
+      },
+    },
+    esES,
+  );
 
   const propsToExport = {
     exportFileName : 'Archivo',
@@ -27,10 +29,18 @@ const headCells = [
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <ThemeProvider theme={theme}>
     <Contenedor>
-       <MuiTable headCells={headCells} rowData={rows} propsToExport={propsToExport} />
+       <MuiTable headCells={headCells} rowData={getDessert} propsToExport={propsToExport} />
     </Contenedor>
-  </React.StrictMode>
+    <br/>
+    <Contenedor>
+       <MuiTable headCells={getSnrFederalColumns} 
+                 rowData={getSNRFederal} 
+                 propsToExport={propsToExport} 
+                 tableTitle = "Sistema <b>Representantes</b>"
+        />
+    </Contenedor>
+  </ThemeProvider>
 );
 

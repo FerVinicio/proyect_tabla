@@ -9,7 +9,7 @@ function createData(name, calories, fat, carbs, protein) {
     };
   }
   
-  const rows = [
+  const getDessert = [
     createData('Cupcake', 305, 3.7, 67, 4.3),
     createData('Donut', 452, 25.0, 51, 4.9),
     createData('Eclair', 262, 16.0, 24, 6.0),
@@ -25,4 +25,16 @@ function createData(name, calories, fat, carbs, protein) {
     /*createData('Oreo', 437, 18.0, 63, 4.0),*/
   ];
 
-  export {rows};
+  const getSNRFederal = [
+    {tipoCandidatura:"Senaduría",  circunscripcion:"Federal",  entidad:"Campeche", distrito:"Prueba", actorPolitico:"Morena",  nombre:"María Gonzalez Chávez",  claveElector:"WEDF98898DSD",  genero:"F",  accionAfirmativa:"Prueba" }, 
+    {tipoCandidatura:"Gobernador",  circunscripcion:"Local",  entidad:"Baja California", distrito:"Prueba", actorPolitico:"PRI",  nombre:"Alberto Martinez Camacho",  claveElector:"SDFG878364SDF",  genero:"M",  accionAfirmativa:"Prueba" }, 
+    {tipoCandidatura:"Presidente",  circunscripcion:"Federal",  entidad:"Ciudad de México", distrito:"Prueba", actorPolitico:"Morena",  nombre:"Ricardo Miranda Villanueva",  claveElector:"QWER977872LA",  genero:"M",  accionAfirmativa:"Prueba" }, 
+    {tipoCandidatura:"Diputación",  circunscripcion:"Federal",  entidad:"Yucatán", distrito:"Prueba", actorPolitico:"PAN",  nombre:"Alejandro Pech Can",  claveElector:"PNSW865355RR",  genero:"M",  accionAfirmativa:"Prueba" }, 
+    {tipoCandidatura:"Alcaldía",  circunscripcion:"Local",  entidad:"Chiapas", distrito:"Prueba", actorPolitico:"PAN",  nombre:"Rosario Pérez Moreno",  claveElector:"REDW098832WED",  genero:"F",  accionAfirmativa:"Prueba" },
+    {tipoCandidatura:"Alcaldía",  circunscripcion:"Local",  entidad:"Campeche", distrito:"Prueba", actorPolitico:"PAN",  nombre:"Sandra Morales Baz",  claveElector:"REK098832WED",  genero:"F",  accionAfirmativa:"Prueba" },
+    {tipoCandidatura:"Alcaldía",  circunscripcion:"Local",  entidad:"Chiapas", distrito:"Prueba", actorPolitico:"Morena",  nombre:"Javier García Bautista",  claveElector:"KHGS77483CD",  genero:"M",  accionAfirmativa:"Prueba" },
+    {tipoCandidatura:"Alcaldía",  circunscripcion:"Local",  entidad:"Campeche", distrito:"Prueba", actorPolitico:"PRI",  nombre:"Elvia Romero Avila",  claveElector:"PLKDA24976K",  genero:"F",  accionAfirmativa:"Prueba" },
+    {tipoCandidatura:"Alcaldía",  circunscripcion:"Local",  entidad:"Yucatán", distrito:"Prueba", actorPolitico:"Morena",  nombre:"Olga Camacho Díaz",  claveElector:"PLCV3553LLA",  genero:"F",  accionAfirmativa:"Prueba" }
+];
+
+  export {getDessert, getSNRFederal};

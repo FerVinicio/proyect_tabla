@@ -1,18 +1,22 @@
 import { useEffect, useContext } from 'react';
 import { ContextTable } from '../context/ContextTable';
 import {ContenedorTabla} from '../elements'
+import { CreateIDForData } from '../utils/utils';
 import EnhancedTable from "./EnhancedTable";
 
-const BodyTable = ({ headCells, rowData, propsToExport }) => {
+const BodyTable = ({ headCells, rowData, propsToExport, tableTitle }) => {
 
-    const {onChangeDataColumns, onChangeDataRows, onChangePropsToExport} = useContext(ContextTable);
+    const {onChangeDataColumns, onChangeDataRows, onChangePropsToExport, setTableTitle} = useContext(ContextTable);
 
     useEffect(() => {
         console.log('Asignando las propiedades al Contexto');
         onChangeDataColumns(headCells);
-        onChangeDataRows(rowData);
+        onChangeDataRows(CreateIDForData(rowData));
+
         //console.log(propsToExport);
         if (propsToExport) onChangePropsToExport(propsToExport);
+        if (tableTitle) setTableTitle(tableTitle);
+
     }, [])
     
     return ( 

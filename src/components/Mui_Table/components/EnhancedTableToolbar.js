@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import Parser from 'html-react-parser';
 
 import { alpha } from '@mui/material/styles';
@@ -19,14 +18,14 @@ import { createColumnToExport, createRowsToExport, executeRequestToExport, getCo
 
 export const EnhancedTableToolbar = ({ numSelected, selection, tableTitle, exportButtons, searchButton }) => {
 
-  console.log('Entrando a encabezados');
+  // console.log('Entrando a encabezados');
   const {dataColumnsFilter, dataRowsFilter, propsToExport} = useContext(ContextTable);
   // console.log(dataColumnsFilter);
   
   const handleToExport = (type) => {
     const columnsToExport = dataColumnsFilter.map((column) => createColumnToExport(column) )
     const rowsToExport = createRowsToExport(dataRowsFilter);
-    console.log('Datos de exportación: ');
+    // console.log('Datos de exportación: ');
     // console.log(propsToExport);
     //const filters = getColumnFilters(dataColumns, tableRef?.current?.state.columns)
     executeRequestToExport(columnsToExport, rowsToExport, type, propsToExport);
@@ -34,7 +33,7 @@ export const EnhancedTableToolbar = ({ numSelected, selection, tableTitle, expor
   //const columnsToExpor = headCells.map( CreateColumnToExport );
   // console.log(JSON.stringify(columnsToExpor));
 
-    console.log('Creando encabezados');
+    // console.log('Creando encabezados');
 
     return (
       <Toolbar

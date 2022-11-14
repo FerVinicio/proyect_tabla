@@ -93,7 +93,7 @@ const ProviderTable = ({children}) => {
   return (
     <ContextTable.Provider value={{ dataColumnsFilter, dataRowsFilter, propsToExport, tableTitle, showDensity, createRowsFilter, 
                                     onChangeDataColumns, onChangeDataRows, onAddFilterColumns, onRemoveFilterColumns, 
-                                    onChangePropsToExport, onChangeTitle
+                                    onChangePropsToExport, onChangeTitle, onChangeShowDensity
                                  }}
     >
         {children}

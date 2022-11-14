@@ -4,8 +4,7 @@ import BodyTable from './BodyTable';
 
 const MuiTable = ({headCells, rowData, propsToExport, tableTitle, showDensity}) => {
 
-    console.log(propsToExport);
-    
+    //console.log(propsToExport);
     return ( 
         <ProviderTable>
           <BodyTable headCells={headCells} 

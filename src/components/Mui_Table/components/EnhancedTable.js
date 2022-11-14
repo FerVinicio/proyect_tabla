@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
+//import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 
@@ -31,7 +31,7 @@ export default function EnhancedTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const {dataColumnsFilter, dataRowsFilter, tableTitle, showDensity} = React.useContext(ContextTable);
-  console.log('Cargando la tabla y sus columnas');
+  // console.log('Cargando la tabla y sus columnas');
   //console.log(dataColumnsFilter);
 
   const handleRequestSort = (event, property) => {
@@ -88,12 +88,11 @@ export default function EnhancedTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataRowsFilter.length) : 0;
 
-  console.log('Creando tabla ->>>>>>');
+  // console.log('Creando tabla ->>>>>>');
 
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
-        {console.log('Llamada a encabezados')}
         <EnhancedTableToolbar 
             numSelected={selected.length}
             tableTitle = {tableTitle} 
@@ -155,14 +154,13 @@ export default function EnhancedTable() {
 
                       {
                         Object.keys(row).map((key, index) => {
-                            //console.log('Key: ' + key)
                             if (key !== 'id') {
                               return (
                                 <TableCell align = {dataColumnsFilter[index].align ? dataColumnsFilter[index].align : "left"} key={key}>
                                     {row[key]}
                                 </TableCell>
                               )
-                            }
+                            } else return null;
                         })
                       }
                     </StyledTableRow>

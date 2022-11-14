@@ -15,8 +15,8 @@ export function CreateIDForData( arrData = [] ) {
    const newData = arrData.map( row => {
       return {...row, id:  uuidv4()}
    } )
-   console.log('Nueva array con IDs')
-   console.log(newData);
+   // console.log('Nueva array con IDs')
+   // console.log(newData);
    return newData;
 }
 
@@ -64,12 +64,12 @@ export function stableSort(array, comparator) {
     return a[1] - b[1];
   });
 
-  const cols = stabilizedThis.map((el) => el[0])
+/*   const cols = stabilizedThis.map((el) => el[0])
               .map((row, index) => {
 
               });
   console.log('Sort method');
-  console.log(cols);
+  console.log(cols); */
 
   return stabilizedThis.map((el) => el[0]);
 }

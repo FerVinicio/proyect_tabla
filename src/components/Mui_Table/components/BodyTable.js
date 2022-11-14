@@ -6,10 +6,11 @@ import EnhancedTable from "./EnhancedTable";
 
 const BodyTable = ({ headCells, rowData, propsToExport, tableTitle, showDensity }) => {
 
-    const {onChangeDataColumns, onChangeDataRows, onChangePropsToExport, onChangeTitle} = useContext(ContextTable);
+    const {onChangeDataColumns, onChangeDataRows, onChangePropsToExport
+         , onChangeTitle, onChangeShowDensity} = useContext(ContextTable);
 
     useEffect(() => {
-        console.log('Asignando las propiedades al Contexto');
+        // console.log('Asignando las propiedades al Contexto');
         onChangeDataColumns(headCells);
         onChangeDataRows(CreateIDForData(rowData));
 

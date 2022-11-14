@@ -30,7 +30,7 @@ export default function EnhancedTable() {
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-  const {dataColumnsFilter, dataRowsFilter, tableTitle} = React.useContext(ContextTable);
+  const {dataColumnsFilter, dataRowsFilter, tableTitle, showDensity} = React.useContext(ContextTable);
   console.log('Cargando la tabla y sus columnas');
   //console.log(dataColumnsFilter);
 
@@ -118,6 +118,15 @@ export default function EnhancedTable() {
                  dataRowsFilter.slice().sort(getComparator(order, orderBy)) */}
 
               <FilterRow dataColumns={dataColumnsFilter}/>
+
+              {dataRowsFilter.length === 0 && (
+                  <StyledTableRow role="row">
+                    <TableCell>
+                        <h2> Sin datos</h2>
+                    </TableCell>
+                  </StyledTableRow>
+              )}
+
               {stableSort(dataRowsFilter, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
@@ -183,11 +192,15 @@ export default function EnhancedTable() {
           //labelRowsPerPage = 'Filas por página'
         />
       </Paper>
-      <FormControlLabel
-        style={{ paddingLeft: 6 }}
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label = {dense ? "Desactivar alta densidad" : "Activar alta densidad"}
-      />
+
+      {showDensity && (
+        <FormControlLabel
+          style={{ paddingLeft: 6 }}
+          control={<Switch checked={dense} onChange={handleChangeDense} />}
+          label = {dense ? "Densidad alta" : "Densidad baja"}
+        />
+      )}
+
     </Box>
   );
 }

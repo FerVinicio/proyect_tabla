@@ -36,8 +36,6 @@ export const EnhancedTableToolbar = ({ numSelected, selection, tableTitle, expor
 
     console.log('Creando encabezados');
 
-    const titulo = "Sistema <b>Representantes</b>";
-
     return (
       <Toolbar
         sx={{

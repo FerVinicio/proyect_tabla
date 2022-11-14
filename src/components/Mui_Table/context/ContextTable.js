@@ -12,9 +12,16 @@ const ProviderTable = ({children}) => {
 
   const [filterColumns, setFilterColumns] = useState(new Map());
 
-  const [propsToExport, setPropToExport] = useState({});
+  const [propsToExport, setPropToExport] = useState({ exportFileName : 'Archivo',
+                                                      exportSheetName : 'Datos',
+                                                      exportTitle : 'Tabla de resultados',
+                                                      subTitle : null,
+                                                      filters : null,
+                                                    });
 
   const [tableTitle, setTableTitle] = useState('Tabla de resultados');
+
+  const [showDensity, setShowDensity] = useState(false);
 
   const onChangeDataColumns = ( newDataColumns ) => {
       setDataColumns([...newDataColumns]);
@@ -30,7 +37,17 @@ const ProviderTable = ({children}) => {
     setPropToExport(props);
     //console.log('Propiedades para exportación');
     //console.log(props);
-  } 
+  }
+
+  const onChangeTitle = (title) => {
+    setTableTitle(title);
+    //console.log('Propiedades para exportación');
+    //console.log(props);
+  }
+
+  const onChangeShowDensity = (showDensity) => {
+    setShowDensity(showDensity);
+  }
 
   const onAddFilterColumns = ( key, value ) => {
     // console.log('Agregando columna filtrada (antes)');
@@ -74,9 +91,9 @@ const ProviderTable = ({children}) => {
   }
 
   return (
-    <ContextTable.Provider value={{ dataColumnsFilter, dataRowsFilter, propsToExport, tableTitle, createRowsFilter, 
+    <ContextTable.Provider value={{ dataColumnsFilter, dataRowsFilter, propsToExport, tableTitle, showDensity, createRowsFilter, 
                                     onChangeDataColumns, onChangeDataRows, onAddFilterColumns, onRemoveFilterColumns, 
-                                    onChangePropsToExport, setTableTitle
+                                    onChangePropsToExport, onChangeTitle
                                  }}
     >
         {children}

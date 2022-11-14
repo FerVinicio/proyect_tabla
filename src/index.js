@@ -37,10 +37,14 @@ root.render(
     <Contenedor>
        <MuiTable headCells={getSnrFederalColumns} 
                  rowData={getSNRFederal} 
-                 propsToExport={propsToExport} 
                  tableTitle = "Sistema <b>Representantes</b>"
+                 propsToExport={propsToExport} 
         />
     </Contenedor>
+    <Contenedor>
+       <MuiTable headCells={getSnrFederalColumns} 
+        />
+    </Contenedor>    
   </ThemeProvider>
 );
 

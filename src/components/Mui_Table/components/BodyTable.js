@@ -4,9 +4,9 @@ import {ContenedorTabla} from '../elements'
 import { CreateIDForData } from '../utils/utils';
 import EnhancedTable from "./EnhancedTable";
 
-const BodyTable = ({ headCells, rowData, propsToExport, tableTitle }) => {
+const BodyTable = ({ headCells, rowData, propsToExport, tableTitle, showDensity }) => {
 
-    const {onChangeDataColumns, onChangeDataRows, onChangePropsToExport, setTableTitle} = useContext(ContextTable);
+    const {onChangeDataColumns, onChangeDataRows, onChangePropsToExport, onChangeTitle} = useContext(ContextTable);
 
     useEffect(() => {
         console.log('Asignando las propiedades al Contexto');
@@ -15,8 +15,8 @@ const BodyTable = ({ headCells, rowData, propsToExport, tableTitle }) => {
 
         //console.log(propsToExport);
         if (propsToExport) onChangePropsToExport(propsToExport);
-        if (tableTitle) setTableTitle(tableTitle);
-
+        if (tableTitle) onChangeTitle(tableTitle);
+        if (showDensity) onChangeShowDensity(showDensity);
     }, [])
     
     return ( 

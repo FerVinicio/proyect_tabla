@@ -122,12 +122,12 @@ export default function EnhancedTable() {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.id);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+                  //const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <StyledTableRow
                       hover
-                      onClick={(event) => handleClick(event, row.id)}
+                      //onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -184,6 +184,7 @@ export default function EnhancedTable() {
         />
       </Paper>
       <FormControlLabel
+        style={{ paddingLeft: 6 }}
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label = {dense ? "Desactivar alta densidad" : "Activar alta densidad"}
       />
